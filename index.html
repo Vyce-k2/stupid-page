@@ -3,50 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRITICAL SYSTEM ERROR</title>
+    <title>Windows Update</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            background-color: #000;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #0078d7;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: left;
+            padding: 10%;
+            user-select: none;
             overflow: hidden;
         }
-        .container {
-            width: 100%;
-            max-width: 600px;
+        .sad-face {
+            font-size: 8rem;
+            margin-bottom: 20px;
         }
-        .red { color: #ff0000; font-weight: bold; }
-        .blink { animation: blinker 0.8s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
+        .message {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            max-width: 800px;
+        }
+        .percentage {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+        .details {
+            font-size: 1rem;
+            line-height: 1.5;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p class="red blink">[!] CRITICAL SYSTEM VULNERABILITY DETECTED</p>
-        <p>[+] Injecting payload...</p>
-        <p>[+] Bypassing firewall security...</p>
-        <p>[+] Extracting Discord Session Tokens...</p>
-        <p>[+] Accessing Saved Passwords...</p>
-        <p class="red">[!] SYSTEM COMPROMISED - EXFILTRATING DATA...</p>
+    <div class="sad-face">:(</div>
+    <div class="message">
+        Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.
+    </div>
+    <div class="percentage">
+        <span id="progress">0</span>% complete
+    </div>
+    <div class="details">
+        For more information about this issue and possible fixes, visit https://www.windows.com/stopcode<br><br>
+        If you call a support person, give them this info:<br>
+        Stop code: CRITICAL_PROCESS_DIED
     </div>
 
     <script>
-        if (navigator.vibrate) {
-            navigator.vibrate([200, 100, 200, 100, 500]);
-        }
-
-        setTimeout(() => {
-            window.location.href = "about:blank";
-        }, 5000);
+        // زيادة النسبة المئوية بشكل تصاعدي وهمي
+        let percent = 0;
+        const progressElem = document.getElementById('progress');
+        
+        const interval = setInterval(() => {
+            percent += Math.floor(Math.random() * 15) + 5;
+            if (percent >= 100) {
+                percent = 100;
+                clearInterval(interval);
+            }
+            progressElem.textContent = percent;
+        }, 1200);
     </script>
 </body>
 </html>
