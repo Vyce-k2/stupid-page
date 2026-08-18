@@ -3,73 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows Update</title>
+    <title>Message</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
-            background-color: #0078d7;
-            color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
             height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            padding: 10%;
-            user-select: none;
-            overflow: hidden;
+            align-items: center;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
         }
-        .sad-face {
-            font-size: 8rem;
-            margin-bottom: 20px;
-        }
-        .message {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            margin-bottom: 40px;
-            max-width: 800px;
-        }
-        .percentage {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-        }
-        .details {
-            font-size: 1rem;
-            line-height: 1.5;
-            opacity: 0.9;
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <div class="sad-face">:(</div>
-    <div class="message">
-        Your PC ran into a problem and needs to restart. We're just collecting some error info, and then we'll restart for you.
-    </div>
-    <div class="percentage">
-        <span id="progress">0</span>% complete
-    </div>
-    <div class="details">
-        For more information about this issue and possible fixes, visit https://www.windows.com/stopcode<br><br>
-        If you call a support person, give them this info:<br>
-        Stop code: CRITICAL_PROCESS_DIED
-    </div>
-
-    <script>
-        // زيادة النسبة المئوية بشكل تصاعدي وهمي
-        let percent = 0;
-        const progressElem = document.getElementById('progress');
-        
-        const interval = setInterval(() => {
-            percent += Math.floor(Math.random() * 15) + 5;
-            if (percent >= 100) {
-                percent = 100;
-                clearInterval(interval);
-            }
-            progressElem.textContent = percent;
-        }, 1200);
-    </script>
+    <h1>Thank you for your cookies :)</h1>
 </body>
 </html>
