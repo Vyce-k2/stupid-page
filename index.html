@@ -3,25 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message</title>
+    <title>My Projects</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
+            background-color: #0f0f11;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        h1 {
-            font-size: 2.5rem;
+            height: 100vh;
+            margin: 0;
             text-align: center;
+        }
+        .scary-text {
+            font-size: 2.2rem;
+            font-weight: bold;
+        }
+        .troll-section {
+            display: none;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #5865F2;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+        .btn:hover {
+            background-color: #4752C4;
         }
     </style>
 </head>
 <body>
-    <h1>Thank you for your cookies :)</h1>
+
+    <!-- الجزء المرعب (أول 4 ثواني) -->
+    <div id="scary" class="scary-text">
+        Thank you for your cookies :)
+    </div>
+
+    <!-- الجزء المضحك والرجوع لديسكورد -->
+    <div id="troll" class="troll-section">
+        <h1>GOTCHA! 🍪😂</h1>
+        <p>No cookies were harmed in the making of this joke.</p>
+        <p>Redirecting you back to Discord in <span id="timer">3</span> seconds...</p>
+        
+        <a id="discord-link" href="https://discord.com/users/1021135649136451656" class="btn">
+            Return to Discord Profile
+        </a>
+    </div>
+
+    <script>
+        const discordUrl = "https://discord.com/users/1021135649136451656";
+
+        // بعد 4 ثواني: إخفاء التهديد وإظهار الترول
+        setTimeout(() => {
+            document.getElementById('scary').style.display = 'none';
+            document.getElementById('troll').style.display = 'block';
+
+            // عد تنازلي 3 ثواني ثم توجيه تلقائي لبروفايلك
+            let timeLeft = 3;
+            const timerElement = document.getElementById('timer');
+            
+            const countdown = setInterval(() => {
+                timeLeft--;
+                timerElement.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    window.location.href = discordUrl;
+                }
+            }, 1000);
+
+        }, 4000);
+    </script>
+
 </body>
 </html>
